@@ -20,11 +20,11 @@ async def ban_globally(_, message):
         from_user = message.from_user
         sudoers = await get_sudoers()
         if user.id == from_user.id:
-            return await message.reply_text("𝗬𝗼𝘂 𝘄𝗮𝗻𝘁 𝘁𝗼 𝗯𝗹𝗼𝗰𝗸 𝘆𝗼𝘂𝗿𝘀𝗲𝗹𝗳?")
+            return await message.reply_text("You want to block yourself?")
         elif user.id == BOT_ID:
-            await message.reply_text("𝗦𝗵𝗼𝘂𝗹𝗱 𝗶 𝗯𝗹𝗼𝗰𝗸 𝗺𝘆 𝘀𝗲𝗹𝗳?")
+            await message.reply_text("Should i block myself")
         elif user.id in sudoers:
-            await message.reply_text("𝗬𝗼𝘂 𝘄𝗮𝗻𝘁 𝘁𝗼 𝗯𝗹𝗼𝗰𝗸 𝗮 𝘀𝘂𝗱𝗼 𝘂𝘀𝗲𝗿")
+            await message.reply_text("You want to block a sudo user?")
         else:
             
             await add_gban_user(user.id)
@@ -136,7 +136,7 @@ async def unban_globally(_, message):
     if user_id == from_user_id:
         await message.reply_text("You want to unblock yourself?")
     elif user_id == BOT_ID:
-        await message.reply_text("𝗧𝗿𝘆 𝗸𝗶𝘆𝗮 𝗯𝗹𝗼𝗰𝗸 𝗸𝗮𝗿𝗻𝗲 𝗸𝗶 𝗻𝗮 𝗵𝘂𝗮 𝘄𝗼.")
+        await message.reply_text("I think That's a Bot, LOL!")
     elif user_id in sudoers:
         await message.reply_text("Sudo users can't be blocked/unblocked.")
     else:
@@ -162,4 +162,4 @@ async def chat_watcher_func(_, message):
             await message.chat.kick_member(userid)
         except Exception:
             return       
-        await message.reply_text(f"{checking} is globally banned by Music and has been kicked out of the chat.\n\n**Possible Reason:** Potential Spammer and Abuser.")
+        await message.reply_text(f"{checking} is globally banned by Owner and has been kicked out of the chat.\n\n**Possible Reason:** Potential Spammer and Abuser.")
