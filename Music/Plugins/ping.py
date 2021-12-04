@@ -4,6 +4,7 @@ from Music import app, SUDOERS, Music_START_TIME
 import os
 import psutil
 import time
+from Music import BOT_USERNAME
 from datetime import datetime
 from Music.MusicUtilities.helpers.time import get_readable_time
 
@@ -20,7 +21,7 @@ Disk: {disk}%'''
     return stats
 
 
-@app.on_message(filters.command(["ping", "ping@MentosMusicBot"]))
+@app.on_message(filters.command(["ping", "ping@{BOT_USERNAME}"]))
 async def ping(_, message):
     uptime = await bot_sys_stats()
     start = datetime.now()
