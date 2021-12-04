@@ -5,7 +5,6 @@ ffmpeg-python
 pillow
 git+https://github.com/pyrogram/pyrogram@master
 py-tgcalls
-pytube
 wget
 python-dotenv
 tgcrypto
