@@ -41,6 +41,7 @@ from typing import Union
 import subprocess
 from asyncio import QueueEmpty
 import shutil
+from Music import BOT_USERNAME
 import os
 from youtubesearchpython import VideosSearch
 from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant
@@ -54,7 +55,7 @@ def time_to_seconds(time):
         int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":")))
     )
 
-@Client.on_message(command(["play", "play@MentosMusicBot"]))
+@Client.on_message(command(["play", "play@{BOT_USERNAME}"]))
 async def play(_, message: Message):
     chat_id = message.chat.id
 #   if not await is_served_chat(chat_id):
@@ -134,7 +135,7 @@ async def play(_, message: Message):
         fucksemx = 1
         what = "Audio Searched"
         await LOG_CHAT(message, what)
-        mystic = await message.reply_text(f"**🔄 𝙎𝙀𝙍𝙑𝙀𝙍 𝙎𝙇𝙊𝙒 𝙃𝘼 𝙒𝘼𝙄𝙏🤤 {username}**")
+        mystic = await message.reply_text(f"**🔄 Processing {username}**")
         if audio.file_size > 157286400:
             await mystic.edit_text("Audio File Size Should Be Less Than 150 mb") 
             return
@@ -259,7 +260,7 @@ async def play(_, message: Message):
         what = "Query Given"
         await LOG_CHAT(message, what)
         query = message.text.split(None, 1)[1]
-        mystic = await message.reply_text("**🔄 𝘿𝙚𝙠𝙝𝙖 𝙧𝙖𝙝𝙖 𝙝𝙪**")
+        mystic = await message.reply_text("**🔄 Searching**")
         try:
             a = VideosSearch(query, limit=1)
             for result in a.result()["result"]:
